@@ -5,3 +5,6 @@ AndroidPluginTest/Binaries/
 AndroidPluginTest/Intermediate/
 AndroidPluginTest/Saved/Logs/AndroidPluginTest.log
 AndroidPluginTest/DerivedDataCache/
+AndroidPluginTest/Saved/Cooked/
+AndroidPluginTest/Build/
+AndroidPluginTest/Saved/
