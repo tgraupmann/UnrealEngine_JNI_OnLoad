@@ -28,7 +28,7 @@ IMPLEMENT_PRIMARY_GAME_MODULE( FDefaultGameModuleImpl, AndroidPluginTest, "Andro
 AndroidPluginTestSetupCallbackJNIOnload GSetupCallbackJNIOnload;
 
 // define the callback function that will be invoked in the JNI_OnLoad event
-void OuyaSDKHandleRegisterCallbackJNIOnLoad(Callback_JNI_OnLoad callback)
+void AndroidPluginTestHandleRegisterCallbackJNIOnLoad(Callback_JNI_OnLoad callback)
 {
 	// check the adb logcat
 	__android_log_print(ANDROID_LOG_VERBOSE, LOG_TAG, "*** This indicates a successful test. The callback was invoked! ***");
@@ -37,7 +37,7 @@ void OuyaSDKHandleRegisterCallbackJNIOnLoad(Callback_JNI_OnLoad callback)
 // Use the constructor to register the callback using the global var: `GSetupCallbackJNIOnload`
 AndroidPluginTestSetupCallbackJNIOnload::AndroidPluginTestSetupCallbackJNIOnload()
 {
-	RegisterCallbackJNIOnLoad((Callback_JNI_OnLoad)OuyaSDKHandleRegisterCallbackJNIOnLoad);
+	RegisterCallbackJNIOnLoad((Callback_JNI_OnLoad)AndroidPluginTestHandleRegisterCallbackJNIOnLoad);
 }
 
 #endif
