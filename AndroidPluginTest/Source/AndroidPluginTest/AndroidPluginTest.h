@@ -5,6 +5,10 @@
 #include "Engine.h"
 
 /**
+ * Pending PR: https://github.com/EpicGames/UnrealEngine/pull/2313
+ */
+
+/**
 * This is a unit test to verify that the JNI_OnLoad callback is properly
 * invoked on Android.
 * A successful test will display a message in the Android logcat.
