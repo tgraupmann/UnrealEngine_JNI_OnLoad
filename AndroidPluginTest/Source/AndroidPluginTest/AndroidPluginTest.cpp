@@ -25,7 +25,7 @@ IMPLEMENT_PRIMARY_GAME_MODULE( FDefaultGameModuleImpl, AndroidPluginTest, "Andro
 #if PLATFORM_ANDROID
 
 // Use a global variable to cause the constructor to invoke
-AndroidPluginTest001::SetupCallbackJNIOnload GSetupCallbackJNIOnload;
+AndroidPluginTestSetupCallbackJNIOnload GSetupCallbackJNIOnload;
 
 // define the callback function that will be invoked in the JNI_OnLoad event
 void OuyaSDKHandleRegisterCallbackJNIOnLoad(Callback_JNI_OnLoad callback)
@@ -35,7 +35,7 @@ void OuyaSDKHandleRegisterCallbackJNIOnLoad(Callback_JNI_OnLoad callback)
 }
 
 // Use the constructor to register the callback using the global var: `GSetupCallbackJNIOnload`
-OuyaSDK::SetupCallbackJNIOnload::SetupCallbackJNIOnload()
+AndroidPluginTestSetupCallbackJNIOnload::AndroidPluginTestSetupCallbackJNIOnload()
 {
 	RegisterCallbackJNIOnLoad((Callback_JNI_OnLoad)OuyaSDKHandleRegisterCallbackJNIOnLoad);
 }
