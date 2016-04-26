@@ -48,7 +48,35 @@ int AndroidPluginTestHandleRegisterCallbackJNIOnLoad(JNIEnv* env)
 		return JNI_ERR;
 	}
 
-	__android_log_print(ANDROID_LOG_VERBOSE, LOG_TAG, "*** OuyaController initialized successfully. ***");
+	const char* strPluginJavaClass = "com/tagenigma/androidplugintest001/PluginTestGameActivity";
+	__android_log_print(ANDROID_LOG_VERBOSE, LOG_TAG, "*** Searching for %s... ***", strPluginJavaClass);
+	jclass jcPluginJavaClass = env->FindClass(strPluginJavaClass);
+	if (jcPluginJavaClass)
+	{
+		__android_log_print(ANDROID_LOG_VERBOSE, LOG_TAG, "*** Found class %s ***", strPluginJavaClass);
+	}
+	else
+	{
+		__android_log_print(ANDROID_LOG_ERROR, LOG_TAG, "*** Failed to find class %s ***", strPluginJavaClass);
+		return JNI_ERR;
+	}
+
+	const char* strPluginJavaMethod = "initialize";
+	jmethodID jmInit = env->GetStaticMethodID(jcPluginJavaClass, strPluginJavaMethod, "()V");
+	if (jmInit)
+	{
+		__android_log_print(ANDROID_LOG_VERBOSE, LOG_TAG, "*** Found method %s", strPluginJavaMethod);
+	}
+	else
+	{
+		__android_log_print(ANDROID_LOG_ERROR, LOG_TAG, "*** Failed to find method %s ***", strPluginJavaMethod);
+		return JNI_ERR;
+	}
+
+	__android_log_print(ANDROID_LOG_VERBOSE, LOG_TAG, "*** Invoking method %s...", strPluginJavaMethod);
+	env->CallStaticVoidMethod(jcPluginJavaClass, jmInit);
+
+	__android_log_print(ANDROID_LOG_VERBOSE, LOG_TAG, "*** AndroidPluginTestHandleRegisterCallbackJNIOnLoad initialized successfully. ***");
 	return JNI_OK;
 }
 
